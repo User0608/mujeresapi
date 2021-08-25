@@ -1,7 +1,7 @@
 package authentication
 
 type Usuario struct {
-	ID       int      `json:"usuario_id"`
+	ID       int      `json:"usuario_id,omitempty"`
 	Username string   `json:"username"`
 	Password string   `json:"password,omitempty"`
 	Estado   bool     `json:"estado"`

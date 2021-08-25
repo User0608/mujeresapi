@@ -9,11 +9,11 @@ import (
 )
 
 func main() {
-	if err := authorization.LoadFiles("./certificates/app.rsa", "./certificates/app.rsa.pub"); err != nil {
+	if err := authorization.LoadFiles("./cmd/certificates/app.rsa", "./cmd/certificates/app.rsa.pub"); err != nil {
 		log.Fatalln("No se cargaron los certificados,", err.Error())
 	}
 	log.Println("Certificados cargados....")
-	e := echo.New()
-	router.RoutesUsuario(e)
-	log.Fatal(e.Start("localhost:91"))
+	server := echo.New()
+	router.Upgrade(server)
+	log.Fatal(server.Start("0.0.0.0:91"))
 }

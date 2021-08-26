@@ -1,9 +1,7 @@
 package paths
 
-import "fmt"
-
-var (
+const (
 	API      = "/v1"
-	APP_USER = fmt.Sprintf("%s/usuario", API)
-	ALERTA   = fmt.Sprintf("%s/alerta", API)
+	APP_USER = "/v1/usuario"
+	ALERTA   = "/v1/alerta"
 )

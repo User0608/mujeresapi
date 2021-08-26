@@ -6,6 +6,7 @@ const (
 	CODE_NO_ENCONTRADO    = "NO_FIND"
 	CODE_INTERNAL_REQUEST = "ERR_II"
 	COD_USUARIO_EXISTE    = "X000K"
+	CODE_FORBIDDEN        = "FF"
 )
 const (
 	InternalMessage = "No se pudo completar la operacion, inténtelo más tarde."
@@ -23,6 +24,15 @@ type LogginResponse struct {
 	Token   string      `json:"token"`
 }
 
+func NewForbiddenResponse(message string) *Response {
+	if message == "" {
+		message = "permiso denegado"
+	}
+	return &Response{
+		Code:    CODE_FORBIDDEN,
+		Message: message,
+	}
+}
 func NewOkResponse(data interface{}) *Response {
 	return &Response{
 		Code: CODE_OK,

@@ -12,10 +12,11 @@ import (
 )
 
 func main() {
-	conf, err := configs.LoadConfigs("config.json")
+	conf, err := configs.LoadServiceConfigs("service_config.json")
 	if err != nil {
-
+		log.Fatalln("No se cargo las configuraciones de servicio:", err.Error())
 	}
+	log.Println("Configuraciones de servicio cargados!")
 	if err := authorization.LoadFiles(conf.Certificates.Private, conf.Certificates.Public); err != nil {
 		log.Fatalln("No se cargaron los certificados,", err.Error())
 	}
@@ -24,6 +25,7 @@ func main() {
 			log.Fatal(err.Error())
 		}
 	}
+	log.Println("Certificados cargados!")
 	server := echo.New()
 	server.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins: conf.Cors.AllowOrigins,

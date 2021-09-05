@@ -15,22 +15,52 @@ type Certificates struct {
 	Private string `json:"private"`
 }
 
-type Config struct {
+type ServiceConfig struct {
 	Address            string       `json:"address"`
 	MediaRootDir       string       `json:"media_dir"`
 	PublicMediaDirPath string       `json:"public_media_dir_path"`
 	Cors               Cors         `json:"CORS"`
 	Certificates       Certificates `json:"certificates"`
 }
+type DBConfigs struct {
+	Host     string `json:"host"`
+	Port     uint   `json:"port"`
+	UserDB   string `json:"user_db"`
+	Password string `json:"password"`
+	DBName   string `json:"db_name"`
+}
 
-func LoadConfigs(path string) (*Config, error) {
-	configs := &Config{}
+func (d *DBConfigs) GetConnectionString() string {
+	cadena := fmt.Sprintf(
+		"host=%s user=%s password=%s dbname=%s port=%d sslmode=disable TimeZone=Asia/Shanghai",
+		d.Host,
+		d.UserDB,
+		d.Password,
+		d.DBName,
+		d.Port,
+	)
+	return cadena
+}
+
+func LoadServiceConfigs(path string) (*ServiceConfig, error) {
+	configs := &ServiceConfig{}
 	file, err := ioutil.ReadFile(path)
 	if err != nil {
 		return nil, fmt.Errorf("No se pudo abrir el archivo de configuraciones: %s", err.Error())
 	}
 	if err := json.Unmarshal(file, configs); err != nil {
 		return nil, fmt.Errorf("Archivo de configuraciones incorrecto, ERR: %s", err.Error())
+	}
+	return configs, nil
+}
+func LoadDBConfigs(path string) (*DBConfigs, error) {
+	configs := &DBConfigs{}
+	file, err := ioutil.ReadFile(path)
+	if err != nil {
+		return nil, fmt.Errorf("No se pudo abrir el archivo de configuraciones db: %s", err.Error())
+	}
+	if err := json.Unmarshal(file, configs); err != nil {
+		return nil, fmt.Errorf("Archivo de configuraciones incorrecto db, ERR: %s", err.Error())
 	}
 	return configs, nil
 }

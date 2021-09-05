@@ -1,6 +1,10 @@
 package injectors
 
 import (
+	"log"
+	"sync"
+
+	"github.com/user0608/mujeresapi/configs"
 	"github.com/user0608/mujeresapi/database"
 	"github.com/user0608/mujeresapi/handlers"
 	"github.com/user0608/mujeresapi/repository"
@@ -8,9 +12,16 @@ import (
 	"gorm.io/gorm"
 )
 
+var ones sync.Once
+
 func init() {
 	ones.Do(func() {
-		db = database.GetDBConnextion(&dbConfig)
+		conf, err := configs.LoadDBConfigs("db_config.json")
+		if err != nil {
+			log.Fatalln("Err db configs,", err.Error())
+		}
+		log.Println("Configuraciones de base de datos cargadas!")
+		db = database.GetDBConnextion(conf)
 		initRepository(db)
 		initServices()
 		initHandlers()

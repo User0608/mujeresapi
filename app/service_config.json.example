@@ -1,4 +1,4 @@
-{
+{    
     "address": "0.0.0.0:90",
     "CORS": {
         "allow_origins": [
@@ -14,7 +14,7 @@
     "media_dir": "./private",
     "public_media_dir_path": "/privado",
     "certificates": {
-        "public": "",
-        "private": ""
+        "public": "certificates/app.rsa.pub",
+        "private": "certificates/app.rsa"
     }
 }

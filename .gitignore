@@ -41,5 +41,6 @@
 
 cmd/certificates/
 private
-config.json
+service_config.json
+db_config.json
 certificates

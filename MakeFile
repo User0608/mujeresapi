@@ -1,0 +1,5 @@
+build: 
+	go build -o /services/mujeresapi/api app/main.go
+
+clean:
+	rm /services/mujeresapi/api

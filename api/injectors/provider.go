@@ -8,3 +8,6 @@ func GetUsuarioHandler() *handlers.UsuarioHandlear {
 func GetAlertaHandler() *handlers.AlertaHandlear {
 	return alertaHandler
 }
+func GetMultimediaHandler() *handlers.MultimediaHandlear {
+	return multimediaHandler
+}

@@ -40,3 +40,6 @@
 .ionide
 
 cmd/certificates/
+private
+config.json
+certificates

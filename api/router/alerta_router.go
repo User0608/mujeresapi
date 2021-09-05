@@ -2,10 +2,10 @@ package router
 
 import (
 	"github.com/labstack/echo/v4"
+	"github.com/user0608/mujeresapi/api/injectors"
+	"github.com/user0608/mujeresapi/api/router/paths"
 	"github.com/user0608/mujeresapi/authorization"
 	"github.com/user0608/mujeresapi/authorization/roles"
-	"github.com/user0608/mujeresapi/cmd/api/injectors"
-	"github.com/user0608/mujeresapi/cmd/api/router/paths"
 )
 
 func alertaRouterUpgrade(e *echo.Echo) {

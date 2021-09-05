@@ -1,4 +1,4 @@
-## Mujeres Api
+# Mujeres Api
 
 # Iniciar Session
 POST:  http://localhost:91/v1/login
@@ -91,7 +91,7 @@ Response:
     }
 ```
 
-# UPDATE de datos usuario App
+# Update de datos usuario App
 PUT: http://localhost:91/v1/registrar
 
 ```json

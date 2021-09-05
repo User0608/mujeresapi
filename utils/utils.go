@@ -1,8 +1,15 @@
 package utils
 
 import (
+	"math/rand"
 	"strings"
+	"time"
 )
+
+func RandonID() int {
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	return r.Int()
+}
 
 func ValidarDecimal(target string) error {
 	nums := "0123456789"

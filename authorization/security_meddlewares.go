@@ -23,20 +23,35 @@ func itemIsContainIn(item string, values []string) bool {
 	}
 	return false
 }
-
+func jwtValidToken(token string, c echo.Context) error {
+	if token == "" {
+		return echo.ErrForbidden
+	}
+	clain, err := ValidateToken(token)
+	if err != nil {
+		return echo.ErrForbidden
+	}
+	c.Set(USERNAME_KEY, clain.UserName)
+	c.Set(USUARIO_ID_KEY, clain.UsuarioID)
+	c.Set(ROLES_KEY, clain.Roles)
+	return nil
+}
 func JWTMiddleware(f echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		token := c.Request().Header.Get("Authorization")
-		if token == "" {
-			return echo.ErrForbidden
+		if err := jwtValidToken(token, c); err != nil {
+			return err
 		}
-		clain, err := ValidateToken(token)
-		if err != nil {
-			return echo.ErrForbidden
+		return f(c)
+	}
+}
+func JWTMiddlewareQueryTokenParam(f echo.HandlerFunc) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		token := c.QueryParam("token")
+		if err := jwtValidToken(token, c); err != nil {
+			log.Println("Conexión rechazada", c.Request().Host)
+			return err
 		}
-		c.Set(USERNAME_KEY, clain.UserName)
-		c.Set(USUARIO_ID_KEY, clain.UsuarioID)
-		c.Set(ROLES_KEY, clain.Roles)
 		return f(c)
 	}
 }

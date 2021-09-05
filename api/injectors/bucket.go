@@ -22,13 +22,16 @@ var dbConfig = database.DBConfig{
 var ( //db connextion
 	db *gorm.DB
 	//storage
-	usuarioStorage storage.UsuarioStorage
-	alertaStorage  storage.AlertaStorage
+	usuarioStorage    storage.UsuarioStorage
+	alertaStorage     storage.AlertaStorage
+	multimediaStorage storage.MultimediaStorage
 	//services
-	usuarioService *services.UsuarioService
-	alertaService  *services.AlertaService
+	usuarioService    *services.UsuarioService
+	alertaService     *services.AlertaService
+	multimediaService *services.MultimediaService
 
 	//handlers
-	usuarioHandler *handlers.UsuarioHandlear
-	alertaHandler  *handlers.AlertaHandlear
+	usuarioHandler    *handlers.UsuarioHandlear
+	alertaHandler     *handlers.AlertaHandlear
+	multimediaHandler *handlers.MultimediaHandlear
 )

@@ -26,6 +26,48 @@ Respuesta:
     },
     "token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9"
 }
+
+## Registrar un usuario, pare realizar esta operacion, es necesario contar con permisos de administrador, Rol ADMIN
+*   Si en los datos no se proporciona ningun rol, este usar por defecto el rol t2,
+    el cual pertenece al grupo de control.
+
+POST: http://localhost:90/v1/usuario
+example post:
+```json
+    {
+        "username":"ksaucedo",
+        "password":"00maira002"
+    }
+```
+response
+```json
+    {
+    "code": "OK",
+    "data": {
+        "usuario_id": 8,
+        "username": "ksaucedo",
+        "password": "00maira002",
+        "estado": true,
+        "roles": [{"role_id": 3}]
+        }
+    }
+```
+
+* por otro lado, nosotros podemos usar el campo "roles", para mandar una lista de roles.
+
+Ejemplo:
+```json
+    {    
+        "username": "ksaucedo",
+        "password": "00maira002",
+        "roles": [{"role_id": 3}]        
+    }    
+```
+- la respuesta sera la misma que antes.
+
+
+
+# Datos para aplicativo movil
 ```
 # Registro de Usuario, este metodo de registro, solo aplica para usuarios del tipo t1, t2 y t3 son gestionados por el admin.
 POST: http://localhost:91/v1/registrar

@@ -44,6 +44,9 @@ func (u *UsuarioService) RegistrarUsuario(user *authentication.Usuario) error {
 	if user == nil {
 		return utils.ErrNullEntity
 	}
+	if len(user.Roles) == 0 {
+		user.Roles = []*authentication.Roles{{ID: 3}}
+	}
 	user.Estado = true
 	check := kcheck.New()
 	if err := check.Target("min=8 no-spaces", user.Username, user.Password).Ok(); err != nil {

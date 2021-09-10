@@ -26,8 +26,10 @@ Respuesta:
     },
     "token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9"
 }
+```
 
-## Registrar un usuario, pare realizar esta operacion, es necesario contar con permisos de administrador, Rol ADMIN
+## Registrar un usuario
+ pare realizar esta operacion, es necesario contar con permisos de administrador, Rol ADMIN
 *   Si en los datos no se proporciona ningun rol, este usar por defecto el rol t2,
     el cual pertenece al grupo de control.
 
@@ -68,8 +70,8 @@ Ejemplo:
 
 
 # Datos para aplicativo movil
-```
-# Registro de Usuario, este metodo de registro, solo aplica para usuarios del tipo t1, t2 y t3 son gestionados por el admin.
+
+Registro de Usuario, este metodo de registro, solo aplica para usuarios del tipo t1, t2 y t3 son gestionados por el admin.
 POST: http://localhost:91/v1/registrar
 
 ```json

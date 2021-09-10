@@ -11,4 +11,5 @@ var (
 	ErrInvalidData          = errors.New("Datos invalidos")
 	ErrNothingFind          = errors.New("Registro no encontrados")
 	ErrIdIsNeeded           = errors.New("El id es necesario")
+	ErrIDInvalido           = errors.New("El id proporcionado no es valido")
 )

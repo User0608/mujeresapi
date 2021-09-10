@@ -5,6 +5,14 @@ import (
 	"gorm.io/gorm"
 )
 
+type UsuarioConsult struct {
+	Response string `gorm:"column:usuario_is_free"`
+}
+
+func (u *UsuarioConsult) OK() bool {
+	return u.Response == "OK"
+}
+
 func existRegister(entity interface{}, id int, g *gorm.DB) error {
 	r := g.Find(entity, id)
 	if r.Error != nil {

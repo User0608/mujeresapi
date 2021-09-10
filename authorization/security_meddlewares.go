@@ -29,6 +29,7 @@ func jwtValidToken(token string, c echo.Context) error {
 	}
 	clain, err := ValidateToken(token)
 	if err != nil {
+		log.Println("El token no es valido")
 		return echo.ErrForbidden
 	}
 	c.Set(USERNAME_KEY, clain.UserName)
@@ -40,7 +41,7 @@ func JWTMiddleware(f echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		token := c.Request().Header.Get("Authorization")
 		if err := jwtValidToken(token, c); err != nil {
-			return err
+			return echo.ErrForbidden
 		}
 		return f(c)
 	}
@@ -60,6 +61,7 @@ func RolesMiddleware(f echo.HandlerFunc, rls ...string) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		dato := c.Get(ROLES_KEY)
 		if dato == nil {
+			log.Println("Roles no encontrados")
 			return echo.ErrForbidden
 		}
 		myRoles := dato.([]string)

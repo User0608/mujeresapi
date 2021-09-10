@@ -28,9 +28,13 @@ func (u *UsuarioService) Loggin(r utils.RequestLoging) (*authentication.Usuario,
 func (u *UsuarioService) AllUsuarios() ([]authentication.Usuario, error) {
 	return u.storage.GetAllUsuarios()
 }
+
 func (u *UsuarioService) RegistrarUsuarioApp(user *authentication.Usuario) error {
 	if user == nil {
 		return utils.ErrNullEntity
+	}
+	if len(user.Roles) > 0 {
+		return utils.ErrInvalidData
 	}
 	user.Roles = []*authentication.Roles{{ID: 2}}
 	return u.RegistrarUsuario(user)
@@ -40,9 +44,6 @@ func (u *UsuarioService) RegistrarUsuario(user *authentication.Usuario) error {
 	if user == nil {
 		return utils.ErrNullEntity
 	}
-	if user.ID == 0 {
-		return utils.ErrIdIsNeeded
-	}
 	user.Estado = true
 	check := kcheck.New()
 	if err := check.Target("min=8 no-spaces", user.Username, user.Password).Ok(); err != nil {
@@ -50,6 +51,7 @@ func (u *UsuarioService) RegistrarUsuario(user *authentication.Usuario) error {
 	}
 	return u.storage.RegistrarUsuario(user)
 }
+
 func (u *UsuarioService) ValidarUsuario(appuser *application.AppUser) error {
 	if appuser == nil {
 		return utils.ErrNullEntity

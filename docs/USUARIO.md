@@ -24,30 +24,31 @@ Respuesta:
             }
         ]
     },
-    "token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6ImtldmluMDAyIiwiUm9sZXMiOlsiYWRtaW4iXX0.fXXKGNxhnrYuK5Pxx3uhqudA0tpaEUmFpWXipv-QJ_GHcoZ0e5PcC7Gm7NbGX-CO4EjiTMa15H3Xy1HbBi-oLP0dLUjQ-x25qPFI71FfbbxQyA5Mxo3oLfTkYmd9JDwN7RPzs6gnaTiek1zFLWz4V16ViNtcAtpxbf7oIByjaS8"
+    "token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9"
 }
 ```
-# Registro de Usuario
+# Registro de Usuario, este metodo de registro, solo aplica para usuarios del tipo t1, t2 y t3 son gestionados por el admin.
 POST: http://localhost:91/v1/registrar
 
 ```json
-    {
-        "username":"usuario2020",
-        "password":"mipassword",
-        "roles":[
-            {
-                "role_id":3
-            }
-        ]
-
+       {
+        "username":"torress05",
+        "password":"fortaleza12"
     }
 ```
 Response:
 ```json
     {
-        "code": "X000K",
-        "message": "El username ya esta en uso"
+    "code": "OK",
+    "data": {
+        "usuario_id": 6,
+        "username": "torress05",
+        "password": "fortaleza12",
+        "estado": true,
+        "roles": [{"role_id": 2,"nombre": "name"}
+        ]
     }
+}
 ```
 # Registro de datos usuario App
 POST: PUT: http://localhost:91/v1/registrar

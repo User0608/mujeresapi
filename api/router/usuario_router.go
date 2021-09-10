@@ -15,9 +15,10 @@ func usuarioRouterUpgrade(e *echo.Echo) {
 	uGroup.Use(authorization.JWTMiddleware)
 
 	e.POST("/v1/login", handlers.LogginUser)
-	e.POST("/v1/registrar", handlers.RegistrarAppUser)
+	e.POST("/v1/registrar", handlers.RegistrarUsuariosGeneral(true))
 
 	uGroup.GET("", authorization.RolesMiddleware(handlers.AllUsersHandler, roles.ADMIN))
+	uGroup.POST("", authorization.RolesMiddleware(handlers.RegistrarUsuariosGeneral(false), roles.ADMIN))
 	uGroup.POST("/detalle", authorization.RolesMiddleware(handlers.CrateUpdateUser(true), roles.ADMIN, roles.APP_ROLE))
 	uGroup.PUT("/detalle", authorization.RolesMiddleware(handlers.CrateUpdateUser(false), roles.ADMIN, roles.APP_ROLE))
 	uGroup.GET("/detalle/:usuario_id", authorization.RolesMiddleware(handlers.GetUserAppById, roles.ADMIN, roles.APP_ROLE))

@@ -31,14 +31,17 @@ func initRepository(gdb *gorm.DB) {
 	usuarioStorage = repository.NewUsuarioRepository(gdb)
 	alertaStorage = repository.NewAlertaRepository(gdb)
 	multimediaStorage = repository.NewMultimediaRepository(gdb)
+	persoaStorage = repository.NewPersonaRepository(gdb)
 }
 func initServices() {
 	usuarioService = services.NewUsuarioService(usuarioStorage)
 	alertaService = services.NewAlertaService(alertaStorage)
 	multimediaService = services.NewMultimediaService(multimediaStorage)
+	personaService = services.NewPersonaService(persoaStorage)
 }
 func initHandlers() {
 	usuarioHandler = handlers.NewUsuarioHandler(usuarioService)
 	alertaHandler = handlers.NewAlertaHandler(alertaService)
 	multimediaHandler = handlers.NewMultimediaHandler(multimediaService)
+	personaHandler = handlers.NewPersonaHandler(personaService)
 }

@@ -11,3 +11,6 @@ func GetAlertaHandler() *handlers.AlertaHandlear {
 func GetMultimediaHandler() *handlers.MultimediaHandlear {
 	return multimediaHandler
 }
+func GetPersonaHandler() *handlers.PersonaHandlear {
+	return personaHandler
+}

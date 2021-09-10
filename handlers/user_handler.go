@@ -23,7 +23,6 @@ func NewUsuarioHandler(s *services.UsuarioService) *UsuarioHandlear {
 		service: s,
 	}
 }
-
 func (u *UsuarioHandlear) LogginUser(c echo.Context) error {
 	Binder := &echo.DefaultBinder{}
 	Request := utils.RequestLoging{}
@@ -47,23 +46,34 @@ func (u *UsuarioHandlear) LogginUser(c echo.Context) error {
 	return c.JSON(http.StatusOK, utils.LogginResponse{Usuario: user, Token: token, Code: utils.CODE_OK})
 }
 
-func (u *UsuarioHandlear) RegistrarAppUser(c echo.Context) error {
-	Binder := &echo.DefaultBinder{}
-	user := &authentication.Usuario{}
-	if err := Binder.BindBody(c, user); err != nil {
-		return echo.ErrBadRequest
-	}
-	if err := u.service.RegistrarUsuarioApp(user); err != nil {
-		if err == utils.ErrExistUsername {
-			return c.JSON(http.StatusBadRequest, utils.Response{
-				Code:    utils.COD_USUARIO_EXISTE,
-				Message: "El username ya esta en uso",
-			})
+func (u *UsuarioHandlear) RegistrarUsuariosGeneral(isApp bool) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		Binder := &echo.DefaultBinder{}
+		user := &authentication.Usuario{}
+		if err := Binder.BindBody(c, user); err != nil {
+			log.Println("Peticion con estructura de datos incorrecta", err.Error())
+			return echo.ErrBadRequest
 		}
-		return c.JSON(http.StatusInternalServerError, utils.NewInternalErrorResponse(""))
+		var err error
+		if isApp {
+			err = u.service.RegistrarUsuarioApp(user)
+		} else {
+			err = u.service.RegistrarUsuario(user)
+		}
+		if err != nil {
+			if err == utils.ErrExistUsername {
+				return c.JSON(http.StatusBadRequest, utils.Response{
+					Code:    utils.COD_USUARIO_EXISTE,
+					Message: "El username ya esta en uso",
+				})
+			}
+			log.Println("Error DB,", err.Error())
+			return c.JSON(http.StatusInternalServerError, utils.NewInternalErrorResponse(""))
+		}
+		return c.JSON(http.StatusOK, utils.NewOkResponse(user))
 	}
-	return c.JSON(http.StatusOK, utils.NewOkResponse(user))
 }
+
 func (u *UsuarioHandlear) CrateUpdateUser(isCreate bool) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		Binder := &echo.DefaultBinder{}

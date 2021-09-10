@@ -15,7 +15,7 @@ ejemplo de respuesta, en data, retorna un array con todos los registros de perso
             "nombre": "Richard",
             "apellido_materno": "Escobal",
             "apellido_paterno": "Cotrina",
-            "telefon": "98763784",
+            "telefono": "98763784",
             "dni": "99324354",
             "direccion_id": 22,
             "direccion": {
@@ -53,25 +53,19 @@ Por otro lado, la respuesta que se devuelve, contiene los datos completos, despu
 * Example
 data send:
 ```json
-{
-    "code": "OK",
-    "data": {
-        "id": 1,
+    {  
         "nombre": "Richard",
         "apellido_materno": "Escobal",
         "apellido_paterno": "Cotrina",
-        "telefon": "98763784",
+        "telefono": "98763784",
         "dni": "99324354",
-        "direccion_id": 22,
         "direccion": {
-            "direccion_id": 22,
             "provincia": "Pacasmayo",
             "distrito": "Guadalupe",
             "direccion": "Calle Junin 235",
             "referencia": "Frente a veterinaria salud"
-        }
+        }    
     }
-}
 ```
 
 server response:
@@ -83,7 +77,7 @@ server response:
         "nombre": "Angel",
         "apellido_materno": "Burga",
         "apellido_paterno": "Coronel",
-        "telefon": "878786762",
+        "telefonoo": "878786762",
         "dni": "98762534",
         "direccion_id": 23,
         "direccion": {
@@ -106,7 +100,7 @@ PUT: http://localhost:90/v1/persona
         "nombre": "Angel",
         "apellido_materno": "Escobal",
         "apellido_paterno": "Cotrina",
-        "telefon": "878786762",
+        "telefonoo": "878786762",
         "dni": "98762534"
     }
 ```
@@ -121,7 +115,7 @@ con lo cual la respuesta sera:
             "nombre": "Angel",
             "apellido_materno": "Escobal",
             "apellido_paterno": "Cotrina",
-            "telefon": "878786762",
+            "telefono": "878786762",
             "dni": "98762534",
             "direccion_id": 0,
             "direccion": null

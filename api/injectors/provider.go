@@ -14,3 +14,6 @@ func GetMultimediaHandler() *handlers.MultimediaHandlear {
 func GetPersonaHandler() *handlers.PersonaHandlear {
 	return personaHandler
 }
+func GetRolesHandler() *handlers.RolesHandlear {
+	return rolesHandler
+}

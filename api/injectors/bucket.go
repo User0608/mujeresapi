@@ -14,15 +14,18 @@ var ( //db connextion
 	alertaStorage     storage.AlertaStorage
 	multimediaStorage storage.MultimediaStorage
 	persoaStorage     storage.PersonaStorage
+	roleStorage       storage.RoleStorage
 	//services
 	usuarioService    *services.UsuarioService
 	alertaService     *services.AlertaService
 	multimediaService *services.MultimediaService
 	personaService    *services.PersonaService
+	roleService       *services.RoleService
 
 	//handlers
 	usuarioHandler    *handlers.UsuarioHandlear
 	alertaHandler     *handlers.AlertaHandlear
 	multimediaHandler *handlers.MultimediaHandlear
 	personaHandler    *handlers.PersonaHandlear
+	rolesHandler      *handlers.RolesHandlear
 )

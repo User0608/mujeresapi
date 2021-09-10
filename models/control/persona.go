@@ -10,7 +10,7 @@ type Persona struct {
 	Nombre          string                 `json:"nombre"`
 	ApellidoMaterno string                 `json:"apellido_materno"`
 	ApellidoPaterno string                 `json:"apellido_paterno"`
-	Telefono        string                 `json:"telefon"`
+	Telefono        string                 `json:"telefono"`
 	Dni             string                 `json:"dni"`
 	DireccionID     int                    `json:"direccion_id"`
 	Direccion       *application.Direccion `json:"direccion"`

@@ -7,4 +7,5 @@ func Upgrade(e *echo.Echo) {
 	alertaRouterUpgrade(e)
 	multimediaRouterUpgrade(e)
 	personaRouterUpgrade(e)
+	rolesRouterUpgrader(e)
 }

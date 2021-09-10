@@ -11,10 +11,14 @@ pasamos la ID del la persona y el usuario a asociar.
 ```
 Respuesta:
 ```json
-    {        
+    {
         "code": "OK",
-        "message": "Operacion realizada con exito!"        
-    }    
+        "data": {
+            "id": 3,
+            "persona_id": 2,
+            "usuario_id": 4
+    }
+}   
 ```
 
 ## Listar datos por id

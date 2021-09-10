@@ -28,6 +28,9 @@ func (u *UsuarioService) Loggin(r utils.RequestLoging) (*authentication.Usuario,
 func (u *UsuarioService) AllUsuarios() ([]authentication.Usuario, error) {
 	return u.storage.GetAllUsuarios()
 }
+func (u *UsuarioService) AllFreeUsuarios() ([]authentication.Usuario, error) {
+	return u.storage.FreeUsuarios()
+}
 
 func (u *UsuarioService) RegistrarUsuarioApp(user *authentication.Usuario) error {
 	if user == nil {

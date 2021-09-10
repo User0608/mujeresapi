@@ -107,11 +107,17 @@ func (u *UsuarioHandlear) CrateUpdateUser(isCreate bool) echo.HandlerFunc {
 func (u *UsuarioHandlear) AllUsersHandler(c echo.Context) error {
 	usuarios, err := u.service.AllUsuarios()
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, utils.NewBadResponse(utils.InternalMessage))
+		return c.JSON(http.StatusInternalServerError, utils.NewInternalErrorResponse(""))
 	}
 	return c.JSON(http.StatusOK, utils.NewOkResponse(usuarios))
 }
-
+func (u *UsuarioHandlear) AllFreeUsuarios(c echo.Context) error {
+	usuarios, err := u.service.AllFreeUsuarios()
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, utils.NewInternalErrorResponse(""))
+	}
+	return c.JSON(http.StatusOK, utils.NewOkResponse(usuarios))
+}
 func (u *UsuarioHandlear) GetUserAppById(c echo.Context) error {
 	id := c.Param("usuario_id")
 	if err := kcheck.New().Target("num", id).Ok(); err != nil {

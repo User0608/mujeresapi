@@ -18,5 +18,5 @@ func (r *MultimediaRepository) RegistrarMultimedia(m []application.Multimedia) e
 }
 
 func (r *MultimediaRepository) VerificarAlertaID(alertaID int) error {
-	return existRegister(&application.Alerta{}, alertaID, r.gdb)
+	return existRegister(r.gdb, &application.Alerta{}, alertaID)
 }

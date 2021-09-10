@@ -179,3 +179,30 @@ Response:
     }
 }
 ```
+# Consultas
+## Listar todos los usuarios
+GET: http://localhost:90/v1/usuario
+
+## Listar los usuarios libres, que no tienen asociacion con ninguna entidad
+GET: http://localhost:90/v1/usuario/free
+Ejemplo de respuesta: data es un array de usuarios.
+```json
+    {
+    "code": "OK",
+    "data": [
+        {
+            "usuario_id": 5,
+            "username": "maria4545",
+            "password": "peru2020",
+            "estado": true,
+            "roles": [
+                {
+                    "role_id": 2,
+                    "nombre": "user-t1",
+                    "descripcion": "usuario applicativo movil"
+                }
+            ]
+        }
+    ]
+}
+```

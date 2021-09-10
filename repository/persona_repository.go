@@ -34,7 +34,7 @@ func (r *PersonaRepository) Register(p *control.Persona) error {
 	return r.gdb.Create(p).Error
 }
 func (r *PersonaRepository) Update(p *control.Persona) error {
-	if err := existRegister(&control.Persona{}, p.ID, r.gdb); err != nil {
+	if err := existRegister(r.gdb, &control.Persona{}, p.ID); err != nil {
 		return err
 	}
 	return r.gdb.Session(&gorm.Session{FullSaveAssociations: true}).Updates(p).Error

@@ -5,6 +5,9 @@ import (
 )
 
 var (
+	ErrDataBaseError        = errors.New("No se pudo completar la operacion")
+	ErrUsuarioNoDisponible  = errors.New("El usuario ya esta en uso")
+	ErrUsuarioNotExists     = errors.New("El usuario no existe")
 	ErrNullEntity           = errors.New("Null Entity")
 	ErrExistUsername        = errors.New("Exist username")
 	ErrNoUsernameOrPassword = errors.New("Missing Username or Password")

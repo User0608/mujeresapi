@@ -20,3 +20,6 @@ func GetRolesHandler() *handlers.RolesHandlear {
 func GetColaboradorHandler() *handlers.ColaboradorHandlear {
 	return colaboradorHandler
 }
+func GetInstitucionHandler() *handlers.InstitucionHandlear {
+	return institucionHandler
+}

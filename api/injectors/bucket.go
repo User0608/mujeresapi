@@ -16,6 +16,8 @@ var ( //db connextion
 	persoaStorage      storage.PersonaStorage
 	roleStorage        storage.RoleStorage
 	colaboradorStorage storage.ColaboradorStorage
+	institucionStorage storage.InstitucionStorage
+
 	//services
 	usuarioService     *services.UsuarioService
 	alertaService      *services.AlertaService
@@ -23,6 +25,7 @@ var ( //db connextion
 	personaService     *services.PersonaService
 	roleService        *services.RoleService
 	colaboradorService *services.ColaboradorService
+	institucionService *services.InsitucionService
 
 	//handlers
 	usuarioHandler     *handlers.UsuarioHandlear
@@ -31,4 +34,5 @@ var ( //db connextion
 	personaHandler     *handlers.PersonaHandlear
 	rolesHandler       *handlers.RolesHandlear
 	colaboradorHandler *handlers.ColaboradorHandlear
+	institucionHandler *handlers.InstitucionHandlear
 )

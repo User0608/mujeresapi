@@ -1,6 +1,8 @@
 package repository
 
 import (
+	"log"
+
 	"github.com/user0608/mujeresapi/models/application"
 	"github.com/user0608/mujeresapi/models/authentication"
 	"github.com/user0608/mujeresapi/utils"
@@ -82,4 +84,25 @@ func (u *UsuarioRepository) GetUsuarioDetalleApp(userid int) (*application.AppUs
 		return nil, utils.ErrNothingFind
 	}
 	return usuario, nil
+}
+
+func (u *UsuarioRepository) FreeUsuarios() ([]authentication.Usuario, error) {
+	usuarios := []authentication.Usuario{}
+	if result := u.gdb.Raw("select * from vw_usuarios_libres").Scan(&usuarios); result.Error != nil {
+		log.Println("Error-1: UsuarioRepository.FreeUsuarios:", result.Error.Error())
+		return nil, utils.ErrDataBaseError
+	}
+	ids := []int{}
+	for _, u := range usuarios {
+		ids = append(ids, u.ID)
+	}
+	if len(ids) > 0 {
+		if result := u.gdb.Preload("Roles").Find(&usuarios, ids); result.Error != nil {
+			log.Println("Error-2: UsuarioRepository.FreeUsuarios:", result.Error.Error())
+			return nil, utils.ErrDataBaseError
+		}
+	} else {
+		return []authentication.Usuario{}, nil
+	}
+	return usuarios, nil
 }

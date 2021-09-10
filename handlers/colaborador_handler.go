@@ -33,7 +33,7 @@ func (h *ColaboradorHandlear) CreateColaborador(c echo.Context) error {
 		}
 		return c.JSON(http.StatusInternalServerError, utils.NewInternalErrorResponse(""))
 	}
-	return c.JSON(http.StatusOK, utils.NewOkMesage("Operacion realizada con exito!"))
+	return c.JSON(http.StatusOK, utils.NewOkResponse(colaborador))
 }
 
 func (h *ColaboradorHandlear) GetByID(c echo.Context) error {

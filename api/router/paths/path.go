@@ -8,4 +8,5 @@ const (
 	MULTIMEDIA  = "/v1/multimedia"
 	PERSONA     = "/v1/persona"
 	COLABORADOR = "/v1/colaborador"
+	INSTUTUCION = "/v1/institucion"
 )

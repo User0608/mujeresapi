@@ -9,4 +9,5 @@ func Upgrade(e *echo.Echo) {
 	personaRouterUpgrade(e)
 	rolesRouterUpgrader(e)
 	colaboradorRouterUpgrader(e)
+	institucionRouterUpgrade(e)
 }

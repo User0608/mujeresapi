@@ -23,7 +23,12 @@ func (r *ColaboradorRepository) AsociarPersonaUsuario(c *control.Colaborador) er
 	if !res.OK() {
 		return utils.ErrIDInvalido
 	}
-	return r.gdb.Create(c).Error
+	if err := r.gdb.Create(c).Error; err != nil {
+		return err
+	}
+	c.Persona = nil
+	c.Usuario = nil
+	return nil
 }
 func (r *ColaboradorRepository) FindColaborador(colaboradorID int) (*control.Colaborador, error) {
 	colaborador := &control.Colaborador{}

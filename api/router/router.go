@@ -8,4 +8,5 @@ func Upgrade(e *echo.Echo) {
 	multimediaRouterUpgrade(e)
 	personaRouterUpgrade(e)
 	rolesRouterUpgrader(e)
+	colaboradorRouterUpgrader(e)
 }

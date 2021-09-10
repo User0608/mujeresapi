@@ -10,22 +10,25 @@ import (
 var ( //db connextion
 	db *gorm.DB
 	//storage
-	usuarioStorage    storage.UsuarioStorage
-	alertaStorage     storage.AlertaStorage
-	multimediaStorage storage.MultimediaStorage
-	persoaStorage     storage.PersonaStorage
-	roleStorage       storage.RoleStorage
+	usuarioStorage     storage.UsuarioStorage
+	alertaStorage      storage.AlertaStorage
+	multimediaStorage  storage.MultimediaStorage
+	persoaStorage      storage.PersonaStorage
+	roleStorage        storage.RoleStorage
+	colaboradorStorage storage.ColaboradorStorage
 	//services
-	usuarioService    *services.UsuarioService
-	alertaService     *services.AlertaService
-	multimediaService *services.MultimediaService
-	personaService    *services.PersonaService
-	roleService       *services.RoleService
+	usuarioService     *services.UsuarioService
+	alertaService      *services.AlertaService
+	multimediaService  *services.MultimediaService
+	personaService     *services.PersonaService
+	roleService        *services.RoleService
+	colaboradorService *services.ColaboradorService
 
 	//handlers
-	usuarioHandler    *handlers.UsuarioHandlear
-	alertaHandler     *handlers.AlertaHandlear
-	multimediaHandler *handlers.MultimediaHandlear
-	personaHandler    *handlers.PersonaHandlear
-	rolesHandler      *handlers.RolesHandlear
+	usuarioHandler     *handlers.UsuarioHandlear
+	alertaHandler      *handlers.AlertaHandlear
+	multimediaHandler  *handlers.MultimediaHandlear
+	personaHandler     *handlers.PersonaHandlear
+	rolesHandler       *handlers.RolesHandlear
+	colaboradorHandler *handlers.ColaboradorHandlear
 )

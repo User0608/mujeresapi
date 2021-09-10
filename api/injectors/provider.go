@@ -17,3 +17,6 @@ func GetPersonaHandler() *handlers.PersonaHandlear {
 func GetRolesHandler() *handlers.RolesHandlear {
 	return rolesHandler
 }
+func GetColaboradorHandler() *handlers.ColaboradorHandlear {
+	return colaboradorHandler
+}

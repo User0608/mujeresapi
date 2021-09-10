@@ -5,7 +5,7 @@ type Usuario struct {
 	Username string   `json:"username"`
 	Password string   `json:"password,omitempty"`
 	Estado   bool     `json:"estado"`
-	Roles    []*Roles `gorm:"many2many:usuario_roles;" json:"roles"`
+	Roles    []*Roles `gorm:"many2many:usuario_roles;" json:"roles,omitempty"`
 }
 
 func (u *Usuario) GetRoles() []string {

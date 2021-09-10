@@ -33,6 +33,7 @@ func initRepository(gdb *gorm.DB) {
 	multimediaStorage = repository.NewMultimediaRepository(gdb)
 	persoaStorage = repository.NewPersonaRepository(gdb)
 	roleStorage = repository.NewRolesRepository(gdb)
+	colaboradorStorage = repository.NewColaboradorRepository(gdb)
 }
 func initServices() {
 	usuarioService = services.NewUsuarioService(usuarioStorage)
@@ -40,6 +41,7 @@ func initServices() {
 	multimediaService = services.NewMultimediaService(multimediaStorage)
 	personaService = services.NewPersonaService(persoaStorage)
 	roleService = services.NewRoleService(roleStorage)
+	colaboradorService = services.NewColaboradorService(colaboradorStorage)
 }
 func initHandlers() {
 	usuarioHandler = handlers.NewUsuarioHandler(usuarioService)
@@ -47,4 +49,5 @@ func initHandlers() {
 	multimediaHandler = handlers.NewMultimediaHandler(multimediaService)
 	personaHandler = handlers.NewPersonaHandler(personaService)
 	rolesHandler = handlers.NewRolesHandler(roleService)
+	colaboradorHandler = handlers.NewColaboradorHandler(colaboradorService)
 }

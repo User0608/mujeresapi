@@ -12,8 +12,8 @@ type Persona struct {
 	ApellidoPaterno string                 `json:"apellido_paterno"`
 	Telefono        string                 `json:"telefono"`
 	Dni             string                 `json:"dni"`
-	DireccionID     int                    `json:"direccion_id"`
-	Direccion       *application.Direccion `json:"direccion"`
+	DireccionID     int                    `json:"direccion_id,omitempty"`
+	Direccion       *application.Direccion `json:"direccion,omitempty"`
 }
 
 func (p *Persona) Validate() error {

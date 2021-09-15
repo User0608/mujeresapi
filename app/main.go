@@ -20,12 +20,12 @@ func main() {
 	if err := authorization.LoadFiles(conf.Certificates.Private, conf.Certificates.Public); err != nil {
 		log.Fatalln("No se cargaron los certificados,", err.Error())
 	}
+	log.Println("Certificados cargados!")
 	if _, err := os.Stat(conf.MediaRootDir); os.IsNotExist(err) {
 		if err := os.Mkdir(conf.MediaRootDir, 0755); err != nil {
 			log.Fatal(err.Error())
 		}
 	}
-	log.Println("Certificados cargados!")
 	server := echo.New()
 	server.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins: conf.Cors.AllowOrigins,

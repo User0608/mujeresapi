@@ -27,7 +27,7 @@ Respuesta:
 }
 ```
 
-#Listar alertas
+# Listar alertas
 GET: http://localhost:91/v1/alerta
 Un usuario con permisos de admin o t2, serán capases de ver la lista total de alertas emitidas por todo los usuarios, mientras que un usuario tipo t1 solo residirá la lista de alertas emitidas por si mismo.
 Si la alerta, tupiese archivos multimedia asociados, estos también serán entregados.
@@ -79,3 +79,6 @@ si dotara de archivos multimedia,estos serian mostrados
     }
 }
 ```
+
+## Alertas por usuario del aplicativo movil
+GET: http://localhost:90/v1/alerta/usuario/:usuario_id

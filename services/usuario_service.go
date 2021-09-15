@@ -31,7 +31,9 @@ func (u *UsuarioService) AllUsuarios() ([]authentication.Usuario, error) {
 func (u *UsuarioService) AllFreeUsuarios() ([]authentication.Usuario, error) {
 	return u.storage.FreeUsuarios()
 }
-
+func (u *UsuarioService) GetAllMovilUser() ([]application.AppUser, error) {
+	return u.storage.GetAllMovilUser()
+}
 func (u *UsuarioService) RegistrarUsuarioApp(user *authentication.Usuario) error {
 	if user == nil {
 		return utils.ErrNullEntity

@@ -26,6 +26,14 @@ func (u *UsuarioRepository) GetAllUsuarios() ([]authentication.Usuario, error) {
 	}
 	return usuarios, nil
 }
+func (u *UsuarioRepository) GetAllMovilUser() ([]application.AppUser, error) {
+	usuarios := []application.AppUser{}
+	if result := u.gdb.Preload("Direccion").Find(&usuarios); result.Error != nil {
+		log.Println("ERROR:", result.Error.Error())
+		return nil, utils.ErrDataBaseError
+	}
+	return usuarios, nil
+}
 func (u *UsuarioRepository) GetUser(username string) (*authentication.Usuario, bool, error) {
 	var users = []authentication.Usuario{}
 	result := u.gdb.Find(&users, "username = ?", username)

@@ -11,5 +11,4 @@ create or replace view vw_usuarios_libres
 			c.usuario_id is null and 
 			i.usuario_id is null
 
-select * from vw_usuarios_libres
 	

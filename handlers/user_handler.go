@@ -134,3 +134,10 @@ func (u *UsuarioHandlear) GetUserAppById(c echo.Context) error {
 	}
 	return c.JSON(http.StatusOK, utils.NewOkResponse(usuario))
 }
+func (u *UsuarioHandlear) AllMovilUser(c echo.Context) error {
+	usuarios, err := u.service.GetAllMovilUser()
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, utils.NewInternalErrorResponse(""))
+	}
+	return c.JSON(http.StatusOK, utils.NewOkResponse(usuarios))
+}

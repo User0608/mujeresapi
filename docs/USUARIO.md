@@ -206,3 +206,8 @@ Ejemplo de respuesta: data es un array de usuarios.
     ]
 }
 ```
+
+## Lista detallada de usuarios del aplicativo movil
+con roles, admin, control
+
+GET: http://localhost:90/v1/usuario/movil

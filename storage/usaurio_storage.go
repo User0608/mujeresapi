@@ -14,4 +14,5 @@ type UsuarioStorage interface {
 	UpdateDetalleAppUsuario(appuser *application.AppUser) error
 	GetUsuarioDetalleApp(userid int) (*application.AppUser, error)
 	FreeUsuarios() ([]authentication.Usuario, error)
+	GetAllMovilUser() ([]application.AppUser, error)
 }

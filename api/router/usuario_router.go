@@ -18,6 +18,7 @@ func usuarioRouterUpgrade(e *echo.Echo) {
 	e.POST("/v1/registrar", handlers.RegistrarUsuariosGeneral(true))
 
 	uGroup.GET("", authorization.RolesMiddleware(handlers.AllUsersHandler, roles.ADMIN))
+	uGroup.GET("/movil", authorization.RolesMiddleware(handlers.AllMovilUser, roles.ADMIN, roles.CONTROL_ROLE))
 	uGroup.GET("/free", authorization.RolesMiddleware(handlers.AllFreeUsuarios, roles.ADMIN))
 	uGroup.POST("", authorization.RolesMiddleware(handlers.RegistrarUsuariosGeneral(false), roles.ADMIN))
 	uGroup.POST("/detalle", authorization.RolesMiddleware(handlers.CrateUpdateUser(true), roles.ADMIN, roles.APP_ROLE))

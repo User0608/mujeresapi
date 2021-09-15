@@ -3,6 +3,7 @@ package handlers
 import (
 	"log"
 	"net/http"
+	"strconv"
 
 	"github.com/labstack/echo/v4"
 	"github.com/user0608/mujeresapi/authorization"
@@ -32,6 +33,17 @@ func IfRequestIsAppUserGetUserID(c echo.Context) (int, bool) {
 		userId = r.(int)
 	}
 	return userId, isAppUser
+}
+func (h *AlertaHandlear) FindByUsuarioID(c echo.Context) error {
+	ID, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, utils.NewBadResponse(""))
+	}
+	alertas, err := h.service.GatAllWithUserID(ID)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, utils.NewInternalErrorResponse(""))
+	}
+	return c.JSON(http.StatusOK, utils.NewOkResponse(alertas))
 }
 func (h *AlertaHandlear) FindAllHandler(c echo.Context) error {
 	userId, isAppUser := IfRequestIsAppUserGetUserID(c)

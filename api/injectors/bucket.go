@@ -18,6 +18,7 @@ var ( //db connextion
 	colaboradorStorage  storage.ColaboradorStorage
 	institucionStorage  storage.InstitucionStorage
 	notificacionStorage storage.NotificacionStorage
+	efectivoStorage     storage.EfectivoStorage
 
 	//services
 	usuarioService      *services.UsuarioService
@@ -28,6 +29,7 @@ var ( //db connextion
 	colaboradorService  *services.ColaboradorService
 	institucionService  *services.InsitucionService
 	notificacionService *services.NotificacionService
+	efectivoService     *services.EfectivoService
 
 	//handlers
 	usuarioHandler      *handlers.UsuarioHandlear
@@ -38,4 +40,5 @@ var ( //db connextion
 	colaboradorHandler  *handlers.ColaboradorHandlear
 	institucionHandler  *handlers.InstitucionHandlear
 	notificacionHandler *handlers.NotificacionHandler
+	efectivoHandler     *handlers.EfectivoHandler
 )

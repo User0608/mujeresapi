@@ -22,21 +22,21 @@ func (a *AlertaRepository) Create(alerta *application.Alerta) error {
 }
 func (a *AlertaRepository) FetchAllByUserAppID(userID int) ([]application.Alerta, error) {
 	alertas := []application.Alerta{}
-	if err := a.gdb.Preload("Multimedias").Order("created_at desc").Find(&alertas, "usuario_id = ?", userID).Error; err != nil {
+	if err := a.gdb.Preload("Multimedias").Preload("Usuario").Order("created_at desc").Find(&alertas, "usuario_id = ?", userID).Error; err != nil {
 		return []application.Alerta{}, err
 	}
 	return alertas, nil
 }
 func (a *AlertaRepository) FetchAllByUserID(userid int) ([]application.Alerta, error) {
 	alertas := []application.Alerta{}
-	if err := a.gdb.Preload("Multimedias").Where("usuario_id = ?", userid).Order("created_at desc").Find(&alertas).Error; err != nil {
+	if err := a.gdb.Preload("Multimedias").Preload("Usuario").Where("usuario_id = ?", userid).Order("created_at desc").Find(&alertas).Error; err != nil {
 		return []application.Alerta{}, err
 	}
 	return alertas, nil
 }
 func (a *AlertaRepository) FetchAll() ([]application.Alerta, error) {
 	alertas := []application.Alerta{}
-	if err := a.gdb.Preload("Multimedias").Find(&alertas).Error; err != nil {
+	if err := a.gdb.Preload("Multimedias").Preload("Usuario").Find(&alertas).Error; err != nil {
 		return []application.Alerta{}, err
 	}
 	return alertas, nil
@@ -44,7 +44,7 @@ func (a *AlertaRepository) FetchAll() ([]application.Alerta, error) {
 
 func (a *AlertaRepository) FetchByID(alertaID int) (*application.Alerta, error) {
 	alerta := &application.Alerta{}
-	result := a.gdb.Preload("Multimedias").First(alerta, alertaID)
+	result := a.gdb.Preload("Multimedias").Preload("Usuario").First(alerta, alertaID)
 	if err := result.Error; err != nil {
 		return nil, err
 	}

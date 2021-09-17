@@ -36,6 +36,7 @@ func initRepository(gdb *gorm.DB) {
 	colaboradorStorage = repository.NewColaboradorRepository(gdb)
 	institucionStorage = repository.NewInstitucionRepository(gdb)
 	notificacionStorage = repository.NewNotificationRepository(gdb)
+	efectivoStorage = repository.NewEfectivoRepository(gdb)
 }
 func initServices() {
 	usuarioService = services.NewUsuarioService(usuarioStorage)
@@ -46,6 +47,7 @@ func initServices() {
 	colaboradorService = services.NewColaboradorService(colaboradorStorage)
 	institucionService = services.NewInstitucionService(institucionStorage)
 	notificacionService = services.NewNotificacionService(notificacionStorage)
+	efectivoService = services.NewEfectivoService(efectivoStorage)
 }
 func initHandlers() {
 	usuarioHandler = handlers.NewUsuarioHandler(usuarioService)
@@ -56,4 +58,5 @@ func initHandlers() {
 	colaboradorHandler = handlers.NewColaboradorHandler(colaboradorService)
 	institucionHandler = handlers.NewInstitucionHandler(institucionService)
 	notificacionHandler = handlers.NewNotificacionHandler(notificacionService)
+	efectivoHandler = handlers.NewEfectivoHandler(efectivoService)
 }

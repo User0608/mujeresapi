@@ -26,3 +26,6 @@ func GetInstitucionHandler() *handlers.InstitucionHandlear {
 func GetNotificationHandler() *handlers.NotificacionHandler {
 	return notificacionHandler
 }
+func GetEfectivoHandler() *handlers.EfectivoHandler {
+	return efectivoHandler
+}

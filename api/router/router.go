@@ -11,4 +11,5 @@ func Upgrade(e *echo.Echo) {
 	colaboradorRouterUpgrader(e)
 	institucionRouterUpgrade(e)
 	notificacionUpgrader(e)
+	efectivoRouterUpgrade(e)
 }

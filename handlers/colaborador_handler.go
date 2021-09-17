@@ -53,3 +53,10 @@ func (h *ColaboradorHandlear) GetByID(c echo.Context) error {
 	}
 	return c.JSON(http.StatusOK, utils.NewOkResponse(colaborador))
 }
+func (h *ColaboradorHandlear) FindAll(c echo.Context) error {
+	colaboradores, err := h.service.AllColaboradores()
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, utils.NewInternalErrorResponse(""))
+	}
+	return c.JSON(http.StatusOK, utils.NewOkResponse(colaboradores))
+}

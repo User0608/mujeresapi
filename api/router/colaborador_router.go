@@ -13,5 +13,7 @@ func colaboradorRouterUpgrader(e *echo.Echo) {
 	g := e.Group(paths.COLABORADOR)
 	g.Use(authorization.JWTMiddleware)
 	g.GET("/:id", authorization.RolesMiddleware(h.GetByID, roles.ADMIN))
+	g.GET("", authorization.RolesMiddleware(h.FindAll, roles.ADMIN, roles.CONTROL_ROLE))
 	g.POST("", authorization.RolesMiddleware(h.CreateColaborador, roles.ADMIN))
+
 }

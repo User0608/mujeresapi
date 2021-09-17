@@ -10,4 +10,5 @@ const (
 	COLABORADOR  = "/v1/colaborador"
 	INSTUTUCION  = "/v1/institucion"
 	NOTIFICACION = "/v1/notificacion"
+	EFECTIVO     = "/v1/efectivo"
 )

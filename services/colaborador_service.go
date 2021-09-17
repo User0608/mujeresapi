@@ -31,3 +31,7 @@ func (s *ColaboradorService) FindByID(colaboradorID int) (*control.Colaborador, 
 	}
 	return s.storage.FindColaborador(colaboradorID)
 }
+
+func (s *ColaboradorService) AllColaboradores() ([]control.Colaborador, error) {
+	return s.storage.AllColaboradores()
+}

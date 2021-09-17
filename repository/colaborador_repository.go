@@ -1,6 +1,8 @@
 package repository
 
 import (
+	"log"
+
 	"github.com/user0608/mujeresapi/models/control"
 	"github.com/user0608/mujeresapi/utils"
 	"gorm.io/gorm"
@@ -43,4 +45,12 @@ func (r *ColaboradorRepository) FindColaborador(colaboradorID int) (*control.Col
 		}
 		return colaborador, nil
 	}
+}
+func (r *ColaboradorRepository) AllColaboradores() ([]control.Colaborador, error) {
+	colaboradores := []control.Colaborador{}
+	if res := r.gdb.Preload("Persona").Find(&colaboradores); res.Error != nil {
+		log.Println("Error-0: ColaboradorRepository.AllColaboradores:", res.Error.Error())
+		return nil, utils.ErrDataBaseError
+	}
+	return colaboradores, nil
 }

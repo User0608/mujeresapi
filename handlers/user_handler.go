@@ -67,8 +67,10 @@ func (u *UsuarioHandlear) RegistrarUsuariosGeneral(isApp bool) echo.HandlerFunc 
 					Message: "El username ya esta en uso",
 				})
 			}
-			log.Println("Error DB,", err.Error())
-			return c.JSON(http.StatusInternalServerError, utils.NewInternalErrorResponse(""))
+			if err == utils.ErrDataBaseError {
+				return c.JSON(http.StatusInternalServerError, utils.NewInternalErrorResponse(""))
+			}
+			return c.JSON(http.StatusBadRequest, utils.NewBadResponse(err.Error()))
 		}
 		return c.JSON(http.StatusOK, utils.NewOkResponse(user))
 	}

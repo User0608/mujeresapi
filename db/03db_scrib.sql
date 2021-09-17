@@ -1,5 +1,6 @@
 create table institucion(
 	id serial not null,
+	nombre varchar(120) not null,
 	persona varchar(120) not null,
 	direccion_id int not null,
 	telefono varchar(20) not null,
@@ -7,6 +8,7 @@ create table institucion(
 	tipo varchar(80) not null,
 	usuario_id int not null
 );
+
 
 create table persona(
 	id serial not null,
@@ -35,7 +37,7 @@ create table notificacion(
 	institucion_id int not null,
 	titulo varchar(200) not null default 'none',
 	nivel int not null default 2,
-	descricion text,
+	descripcion text,
 	colaborador_id int not null
 );
 

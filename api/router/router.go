@@ -10,4 +10,5 @@ func Upgrade(e *echo.Echo) {
 	rolesRouterUpgrader(e)
 	colaboradorRouterUpgrader(e)
 	institucionRouterUpgrade(e)
+	notificacionUpgrader(e)
 }

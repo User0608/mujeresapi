@@ -69,7 +69,11 @@ func (u *UsuarioRepository) RegistrarUsuario(user *authentication.Usuario) error
 	if u.gdb.Find(&[]authentication.Usuario{}, "username = ?", user.Username).RowsAffected > 0 {
 		return utils.ErrExistUsername
 	}
-	return u.gdb.Create(user).Error
+	if err := u.gdb.Create(user).Error; err != nil {
+		log.Println("Error: UsuarioRepository.RegistrarUsuario:", err.Error())
+		return utils.ErrDataBaseError
+	}
+	return nil
 }
 
 func (u *UsuarioRepository) RegistrarDetalleAppUsuario(appuser *application.AppUser) error {

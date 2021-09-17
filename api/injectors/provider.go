@@ -23,3 +23,6 @@ func GetColaboradorHandler() *handlers.ColaboradorHandlear {
 func GetInstitucionHandler() *handlers.InstitucionHandlear {
 	return institucionHandler
 }
+func GetNotificationHandler() *handlers.NotificacionHandler {
+	return notificacionHandler
+}

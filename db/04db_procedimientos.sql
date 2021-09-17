@@ -25,3 +25,54 @@ BEGIN
 	return 'FF';
 END;
 $$ LANGUAGE plpgsql;
+
+-- Funcion que permite varificar si una entidad existe o no.
+create or replace function fn_consult(
+	tablename varchar(30),
+	table_id int
+) returns integer as
+$$
+declare 
+	resultado int; 
+begin	
+	execute 'select count(*) from ' ||
+		quote_ident(tablename)||
+		' where id = '||
+		quote_nullable(table_id) into resultado;	
+	return resultado;	
+	EXCEPTION
+		WHEN  undefined_table then
+			raise exception 'La tabla % no existe!, funcion sql `fn_consult`',tablename;	
+end;
+$$ language plpgsql;
+
+--- Funcion que me devuelve, la lista de notificaciones por id, y intitucion
+
+create or replace function fn_find_notificacion_for_institucion(
+	_notificacion_id int,
+	_usuario_id int
+) returns setof notificacion as
+$$
+begin
+	return query select n.* from notificacion n 
+			inner join institucion i on n.institucion_id =i.id
+			inner join usuario u on i.usuario_id = u.id
+				where n.id = _notificacion_id and u.id=_usuario_id;
+end;
+$$
+LANGUAGE plpgsql;
+
+-- Todas las notificaciones, correspondientes a un usuario institucional
+
+create or replace function fn_find_all_notificacion_for_institucion(
+	_usuario_id int
+) returns setof notificacion as
+$$
+begin
+	return query select n.* from notificacion n 
+			inner join institucion i on n.institucion_id =i.id
+			inner join usuario u on i.usuario_id = u.id
+				where u.id=_usuario_id;
+end;
+$$
+LANGUAGE plpgsql;

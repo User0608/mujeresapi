@@ -5,6 +5,7 @@ Todas las operaciones que se detallan a continuacion, requieren tener permisos, 
 Estructurá de datos JSON a enviar
 ```json
 {
+        "nombre":"Comisaria Pacanga",
         "persona": "Jose Angel Gomez Diaz",
         "telefono": "995831649",
         "email": "josek@outlook.com",
@@ -24,6 +25,7 @@ La respuesta en casos todo salga de manera esperada sera:
         "code": "OK",
         "data": {
             "institucion_id": 1,
+            "nombre":"Comisaria Pacanga",
             "persona": "Jose Angel Gomez Diaz",
             "telefono": "995831649",
             "email": "josek@outlook.com",
@@ -66,6 +68,7 @@ Ejemplo de respuesta:
         "code": "OK",
         "data": { // esta puede ser un arregle, segun se el caso.
             "institucion_id": 1,
+            "nombre":"Comisaria Pacanga",
             "persona": "Jose Angel Gomez Diaz",
             "telefono": "995831649",
             "email": "josek@outlook.com",

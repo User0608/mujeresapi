@@ -10,29 +10,32 @@ import (
 var ( //db connextion
 	db *gorm.DB
 	//storage
-	usuarioStorage     storage.UsuarioStorage
-	alertaStorage      storage.AlertaStorage
-	multimediaStorage  storage.MultimediaStorage
-	persoaStorage      storage.PersonaStorage
-	roleStorage        storage.RoleStorage
-	colaboradorStorage storage.ColaboradorStorage
-	institucionStorage storage.InstitucionStorage
+	usuarioStorage      storage.UsuarioStorage
+	alertaStorage       storage.AlertaStorage
+	multimediaStorage   storage.MultimediaStorage
+	persoaStorage       storage.PersonaStorage
+	roleStorage         storage.RoleStorage
+	colaboradorStorage  storage.ColaboradorStorage
+	institucionStorage  storage.InstitucionStorage
+	notificacionStorage storage.NotificacionStorage
 
 	//services
-	usuarioService     *services.UsuarioService
-	alertaService      *services.AlertaService
-	multimediaService  *services.MultimediaService
-	personaService     *services.PersonaService
-	roleService        *services.RoleService
-	colaboradorService *services.ColaboradorService
-	institucionService *services.InsitucionService
+	usuarioService      *services.UsuarioService
+	alertaService       *services.AlertaService
+	multimediaService   *services.MultimediaService
+	personaService      *services.PersonaService
+	roleService         *services.RoleService
+	colaboradorService  *services.ColaboradorService
+	institucionService  *services.InsitucionService
+	notificacionService *services.NotificacionService
 
 	//handlers
-	usuarioHandler     *handlers.UsuarioHandlear
-	alertaHandler      *handlers.AlertaHandlear
-	multimediaHandler  *handlers.MultimediaHandlear
-	personaHandler     *handlers.PersonaHandlear
-	rolesHandler       *handlers.RolesHandlear
-	colaboradorHandler *handlers.ColaboradorHandlear
-	institucionHandler *handlers.InstitucionHandlear
+	usuarioHandler      *handlers.UsuarioHandlear
+	alertaHandler       *handlers.AlertaHandlear
+	multimediaHandler   *handlers.MultimediaHandlear
+	personaHandler      *handlers.PersonaHandlear
+	rolesHandler        *handlers.RolesHandlear
+	colaboradorHandler  *handlers.ColaboradorHandlear
+	institucionHandler  *handlers.InstitucionHandlear
+	notificacionHandler *handlers.NotificacionHandler
 )

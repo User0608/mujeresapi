@@ -7,6 +7,7 @@ import (
 
 type Institucion struct {
 	ID          int                    `json:"institucion_id"`
+	Nombre      string                 `json:"nombre"`
 	Persona     string                 `json:"persona"`
 	Telefono    string                 `json:"telefono"`
 	Email       string                 `json:"email"`
@@ -18,7 +19,7 @@ type Institucion struct {
 
 func (i *Institucion) Validate() error {
 	chk := kcheck.New()
-	if err := chk.Target("min=2 basic", i.Persona).Ok(); err != nil {
+	if err := chk.Target("min=2 basic", i.Persona, i.Nombre).Ok(); err != nil {
 		return err
 	}
 	if err := chk.Target("num min=8", i.Telefono).Ok(); err != nil {

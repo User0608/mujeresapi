@@ -1,6 +1,8 @@
 package services
 
 import (
+	"errors"
+
 	"github.com/user0608/kcheck"
 	"github.com/user0608/mujeresapi/models/application"
 	"github.com/user0608/mujeresapi/models/authentication"
@@ -55,7 +57,7 @@ func (u *UsuarioService) RegistrarUsuario(user *authentication.Usuario) error {
 	user.Estado = true
 	check := kcheck.New()
 	if err := check.Target("min=8 no-spaces", user.Username, user.Password).Ok(); err != nil {
-		return utils.ErrInvalidData
+		return errors.New("El usuario y contraseña, debe tener minimo 8 caracteres")
 	}
 	return u.storage.RegistrarUsuario(user)
 }

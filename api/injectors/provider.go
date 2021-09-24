@@ -29,3 +29,6 @@ func GetNotificationHandler() *handlers.NotificacionHandler {
 func GetEfectivoHandler() *handlers.EfectivoHandler {
 	return efectivoHandler
 }
+func GetAsignacionHandler() *handlers.AsignacionHandler {
+	return asignacionHandler
+}

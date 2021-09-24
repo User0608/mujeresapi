@@ -11,4 +11,5 @@ const (
 	INSTUTUCION  = "/v1/institucion"
 	NOTIFICACION = "/v1/notificacion"
 	EFECTIVO     = "/v1/efectivo"
+	ASIGNACION   = "/v1/asignacion"
 )

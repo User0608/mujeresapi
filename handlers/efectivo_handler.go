@@ -34,6 +34,7 @@ func (h *EfectivoHandler) Create(c echo.Context) error {
 	}
 	return c.JSON(http.StatusOK, utils.NewOkResponse(e))
 }
+
 func (h *EfectivoHandler) FindAll(c echo.Context) error {
 	efectivos, err := h.service.GetAll()
 	if err != nil {

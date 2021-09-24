@@ -12,4 +12,5 @@ func Upgrade(e *echo.Echo) {
 	institucionRouterUpgrade(e)
 	notificacionUpgrader(e)
 	efectivoRouterUpgrade(e)
+	asignacionRouterUpgrade(e)
 }

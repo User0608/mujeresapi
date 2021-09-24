@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/user0608/mujeresapi/models/control"
@@ -53,4 +54,13 @@ func (r *ColaboradorRepository) AllColaboradores() ([]control.Colaborador, error
 		return nil, utils.ErrDataBaseError
 	}
 	return colaboradores, nil
+}
+func (r *ColaboradorRepository) FindByUsuarioID(usuarioID int) (*control.Colaborador, error) {
+	colaborador := &control.Colaborador{}
+	fmt.Println(usuarioID)
+	if res := r.gdb.Preload("Persona").Limit(1).Find(colaborador, "usuario_id=?", usuarioID); res.Error != nil {
+		log.Println("Error-1: EfectivoRepository.FindAllByUsuarioID", res.Error.Error())
+		return nil, utils.ErrDataBaseError
+	}
+	return colaborador, nil
 }

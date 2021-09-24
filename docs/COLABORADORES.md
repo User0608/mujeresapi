@@ -51,3 +51,6 @@ GET: http://localhost:90/v1/colaborador/:id
 
 ## Listar Todos los colaboradores
 GET: http://localhost:90/v1/colaborador
+
+## Mi informacion
+GET: http://localhost:90/v1/colaborador/me

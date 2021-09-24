@@ -75,6 +75,11 @@ func (r *NotificacionRepository) FindByIDForInstitucion(notificacionID, usuarioI
 	} else {
 		if res.RowsAffected == 0 {
 			return nil, utils.ErrNothingFind
+		} else {
+			if err := r.gorm.Limit(1).Preload("Institucion.Direccion").Preload("Colaborador.Persona").Preload("Alerta").Find(&notificacion, notificacion.ID).Error; err != nil {
+				log.Println("Error-0: NotificacionRepository.FindByIDForInstitucion:", res.Error.Error())
+				return nil, utils.ErrDataBaseError
+			}
 		}
 	}
 	return &notificacion, nil

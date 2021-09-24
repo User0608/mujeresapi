@@ -3,16 +3,21 @@ package control
 import (
 	"fmt"
 	"strings"
+
+	"github.com/user0608/mujeresapi/models/application"
 )
 
 type Notificacion struct {
-	ID            int    `json:"notificacion_id"`
-	Titulo        string `json:"titulo"`
-	AlertaID      int    `json:"alerta_id"`
-	InstitucionID int    `json:"institucion_id"`
-	Nivel         int    `json:"nivel"`
-	Descripcion   string `json:"descripcion"`
-	ColaboradorID int    `json:"colaborador_id"`
+	ID            int                `json:"notificacion_id"`
+	Titulo        string             `json:"titulo"`
+	AlertaID      int                `json:"alerta_id"`
+	Alerta        application.Alerta `json:"alerta,omitempty"`
+	InstitucionID int                `json:"institucion_id"`
+	Institucion   Institucion        `json:"institucion,omitempty"`
+	Nivel         int                `json:"nivel"`
+	Descripcion   string             `json:"descripcion"`
+	ColaboradorID int                `json:"colaborador_id"`
+	Colaborador   Colaborador        `json:"colaborador,omitempty"`
 }
 
 func (n *Notificacion) Validar() error {

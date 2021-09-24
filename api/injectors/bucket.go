@@ -20,6 +20,7 @@ var ( //db connextion
 	notificacionStorage storage.NotificacionStorage
 	efectivoStorage     storage.EfectivoStorage
 	asignacionStorage   storage.AsignacionStorage
+	reporteStorage      storage.ReporteStorage
 	//services
 	usuarioService      *services.UsuarioService
 	alertaService       *services.AlertaService
@@ -31,6 +32,7 @@ var ( //db connextion
 	notificacionService *services.NotificacionService
 	efectivoService     *services.EfectivoService
 	asignacionService   *services.AsignacionService
+	reporteService      *services.ReporteService
 
 	//handlers
 	usuarioHandler      *handlers.UsuarioHandlear
@@ -43,4 +45,5 @@ var ( //db connextion
 	notificacionHandler *handlers.NotificacionHandler
 	efectivoHandler     *handlers.EfectivoHandler
 	asignacionHandler   *handlers.AsignacionHandler
+	reporteHandler      *handlers.ReporteHandler
 )

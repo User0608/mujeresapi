@@ -32,3 +32,6 @@ func GetEfectivoHandler() *handlers.EfectivoHandler {
 func GetAsignacionHandler() *handlers.AsignacionHandler {
 	return asignacionHandler
 }
+func GetReporteHandler() *handlers.ReporteHandler {
+	return reporteHandler
+}

@@ -37,7 +37,7 @@ func (r *AsignarEfectivoRepository) Update(id int, a control.Asignacion) (*contr
 		ID:         id,
 		Asignacion: a,
 	}
-	if res := r.gorm.Omit("created_at").Save(asignacion); res.Error != nil {
+	if res := r.gorm.Omit("created_at").Updates(asignacion); res.Error != nil {
 		log.Println("Error-1:AsignarEfectivoRepository.Update:", res.Error.Error())
 		return nil, utils.ErrDataBaseError
 	}

@@ -1,2 +1,3 @@
 # API
-Este proyecto es desarrollado, con la finalidad de implementar un sistema de notificaciones y reportes de abuso familiar.
+API, Sistema Mujeres, un proyecto universitario, el cual busca implementar un sistema de notificaciones para manejar reportes de abuso familiar.
+![Image](https://github.com/User0608/mujeres-app/blob/master/image.png)
